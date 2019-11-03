@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import Head from 'next/head'
 import Link from 'next/link'
-import Router from 'next/router'
 import Nav from '../../components/nav'
 import GlobalStyles from '../../components/styles'
 
