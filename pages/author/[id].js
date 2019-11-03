@@ -51,10 +51,10 @@ const Address = ({ address }) => {
   )
 }
 
-const Posts = ({ author }) => (
+const Posts = ({ author, prev }) => (
   <div>
     <Head>
-      <title>Author</title>
+      <title>{author.name} - Author</title>
       <link rel='icon' href='/favicon.ico' />
     </Head>
 
@@ -63,7 +63,13 @@ const Posts = ({ author }) => (
     <div className='hero'>
       <h1 className='title'>{author.name}</h1>
       <p className='description'>
-        <a href='#' onClick={() => Router.back()}>&larr; Go Back</a>
+        <Link href={prev ? '/post[id]' : '/'} as={prev ? `/post/${prev}` : '/'}>
+          <a>&larr; Go Back</a>
+        </Link>
+        <span> | </span>
+        <Link href="/author/[id]/posts" as={`/author/${author.id}/posts`}>
+          <a>View {author.name}&apos;s Posts</a>
+        </Link>
       </p>
 
       <div className='description'>
@@ -98,12 +104,13 @@ const Posts = ({ author }) => (
 )
 
 Posts.getInitialProps = async ({ query }) => {
-  const { id } = query;
+  const { id, prev } = query;
   const author = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
     .then(({ data }) => data)
 
   return {
-    author
+    author,
+    prev
   }
 }
 

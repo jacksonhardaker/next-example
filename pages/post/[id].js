@@ -8,7 +8,7 @@ import GlobalStyles from '../../components/styles'
 const Post = ({ post, comments, author }) => (
   <div>
     <Head>
-      <title>Post</title>
+      <title>{post.title}</title>
       <link rel='icon' href='/favicon.ico' />
     </Head>
 
@@ -17,7 +17,7 @@ const Post = ({ post, comments, author }) => (
     <div className='hero'>
       <h1 className='title'>{post.title}</h1>
       <p className='description'>
-        <Link href='/posts'>
+        <Link href='/'>
           <a>&larr; Go Back</a>
         </Link>
       </p>
@@ -28,7 +28,7 @@ const Post = ({ post, comments, author }) => (
           <footer>
             <p>
               <span>Written by&nbsp;</span>
-              <Link href={'/author/[id]'} as={`/author/${author.id}`}>
+              <Link href={{ pathname: '/author/[id]', query: { prev: post.id }}} as={`/author/${author.id}`}>
                 <a>{author.name}</a>
               </Link>
             </p>
@@ -57,7 +57,7 @@ const Post = ({ post, comments, author }) => (
   </div>
 )
 
-Post.getInitialProps = async ({ query, req }) => {
+Post.getInitialProps = async ({ query }) => {
   const { id } = query
   const post = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
     .then(({ data }) => data)
