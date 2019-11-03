@@ -1,7 +1,6 @@
 {
   "name": "next-example",
   "version": 2,
-  "scope": "jacksonhardaker",
   "builds": [
     {
       "src": "package.json",
