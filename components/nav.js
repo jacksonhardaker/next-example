@@ -3,9 +3,9 @@ import Link from 'next/link'
 import Minicart from '../Minicart/Minicart'
 import ToggleMinicart from '../Minicart/ToggleMinicart'
 import products from "../api/products";
-import LineItemSansImage from '../Minicart/LineItemWithoutImage';
-import CustomizeLineItems from '../Minicart/CustomizeLineItems';
-import LineItemOnlyImage from '../Minicart/LineItemOnlyImage';
+import LineItemSansImage from '../Minicart/LineItems/LineItemVariants/LineItemWithoutImage';
+import CustomizeLineItems from '../Minicart/LineItems/CustomizeLineItems';
+import LineItemOnlyImage from '../Minicart/LineItems/LineItemVariants/LineItemOnlyImage';
 
 const links = [
   { href: 'https://github.com/jacksonhardaker/next-example', label: 'GitHub' }
@@ -36,12 +36,18 @@ const Nav = () => {
         </li>
       </ul>
 
-      <Minicart products={products} cart={[17, 5, 11]}>
+      {/**
+       * Customize by providing no more than a couple of nested components.
+       */}
+      {/* <Minicart products={products} cart={[17, 5, 11]}>
         <CustomizeLineItems>
           <LineItemSansImage />
         </CustomizeLineItems>
-      </Minicart>
+      </Minicart> */}
 
+      {/**
+       * Customize by providing callback function and returning fully customized DOM.
+       */}
       {/* <Minicart products={products} cart={[17, 5, 11]}>
         <CustomizeLineItems>
           {({ products, cart }) => {
@@ -54,7 +60,10 @@ const Nav = () => {
         </CustomizeLineItems>
       </Minicart> */}
 
-      {/* <Minicart products={products} cart={[17, 5, 11]} /> */}
+      {/**
+       * Default usage.
+       */}
+      <Minicart products={products} cart={[17, 5, 11]} />
 
       <style jsx>{`
       :global(body) {

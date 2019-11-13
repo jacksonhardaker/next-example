@@ -1,6 +1,6 @@
 import React from 'react'
 import isFunction from 'lodash/isFunction';
-import LineItem from './LineItem';
+import LineItem from './LineItemVariants/LineItem';
 
 const Content = (props) => {
   const { children, products, cart } = props;

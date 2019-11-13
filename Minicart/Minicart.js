@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import LineItems from "./LineItems";
+import LineItems from "./LineItems/LineItems";
 
 const Minicart = ({ products, cart, children }) => {
   const [open, setOpen] = useState(false);

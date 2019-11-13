@@ -1,5 +1,5 @@
 import isFunction from 'lodash/isFunction'
-import LineItem from './LineItem';
+import LineItem from './LineItemVariants/LineItem';
 import LineItems from './LineItems';
 
 const CustomizeLineItems = ({ products, cart, children }) => {
